@@ -8,8 +8,10 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <h1>Working with Query Builder Tables</h1>
+                <h1>Working with Eloquent Builder Tables</h1>
             </div>
+
+            <livewire:user-eloquent-builder-table />
         </div>
     </div>
 </x-app-layout>
