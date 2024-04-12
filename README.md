@@ -43,3 +43,48 @@ To publish Language files, run:
 ```bash
 php artisan vendor:publish --tag=livewire-powergrid-lang
 ```
+
+
+## Create PowerGrid Table
+
+```
+❯ npm i flatpickr --save
+```
+
+````
+❯ composer require openspout/openspout
+````
+
+
+
+
+### Collection
+
+❯ php artisan powergrid:create
+  Enter a name for your new PowerGrid Component:                    UserCollectionTable
+  Select your preferred Data source:                                Collection 
+
+ ⚡ UserCollectionTable was successfully created at [app/Livewire/UserCollectionTable.php].
+
+ 💡 include the UserCollectionTable component using the tag: <livewire:user-collection-table/>
+
+### Query Builder
+
+❯ php artisan powergrid:create
+
+  Enter a name for your new PowerGrid Component:                    UserQueryBuilderTable
+  Select your preferred Data source:                                Query Builder
+  Enter or Select a DB Table:                                       users
+  Auto-import Data Source fields from [users] table:                Yes
+  
+ ⚡ UserQueryBuilderTable was successfully created at [app/Livewire/UserQueryBuilderTable.php].
+
+ 💡 include the UserQueryBuilderTable component using the tag: <livewire:user-query-builder-table/>
+
+❯ php artisan powergrid:create
+
+ Enter a name for your new PowerGrid Component:                     UserEloquentBuilderTable
+ Select your preferred Data source:                                 Eloquent Builder
+ Select a Model or enter its Name/FQN class:                        App\Models\User
+ Auto-import Data Source fields from $fillable in [User] Model:     Yes
+ 

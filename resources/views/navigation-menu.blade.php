@@ -16,8 +16,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('playground') }}" :active="request()->routeIs('playground')">
-                        {{ __('Playground') }}
+                    <x-nav-link href="#">{{ __('Playground:') }}</x-nav-link>
+                    <x-nav-link href="{{ route('playground/collection') }}" :active="request()->routeIs('playground/collection')">
+                        {{ __('Collection') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('playground/eloquent') }}" :active="request()->routeIs('playground/eloquent')">
+                        {{ __('Eloquent') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('playground/query') }}" :active="request()->routeIs('playground/query')">
+                        {{ __('Query') }}
                     </x-nav-link>
                 </div>
             </div>
