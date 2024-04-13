@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\PowerGridDemo\Chef;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +14,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->withPersonalTeam()->create();
+        $this->call([
+            KitchenSeeder::class,
+            CategorySeeder::class,
+            RestaurantSeeder::class,
+            ChefSeeder::class,
+            DishSeeder::class,
+            UserSeeder::class,
+        ]);
+
+        $chefCategories = [
+            'Luan' => [1, 3, 4],
+            'Dan' => [2, 5],
+            'Vitor' => [5, 6],
+            'Claudio' => [1, 6, 7],
+        ];
+
+        Chef::query()->get()->each(function (Chef $chef) use ($chefCategories) {
+            $chef->categories()->attach($chefCategories[$chef->name]);
+        });
+
 
         User::factory()->withPersonalTeam()->create([
             'name' => 'Test User',

@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
-use Illuminate\Database\Query\Builder;
+use App\Models\Film;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -16,19 +16,23 @@ use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 
-final class UserQueryBuilderTable extends PowerGridComponent
+
+use App\Helpers\PowerGridThemes\TailwindStriped;
+
+final class FilmTable extends PowerGridComponent
 {
     use WithExport;
 
     public function setUp(): array
     {
-        $this->showCheckBox();
+        // $this->showCheckBox();
 
         return [
-            Exportable::make('export')
-                ->striped()
-                ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
-            Header::make()->showSearchInput(),
+            // Exportable::make('export')->striped()->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
+            Header::make()
+                ->showToggleColumns()
+                ->showSearchInput(),
+
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -37,78 +41,59 @@ final class UserQueryBuilderTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return DB::table('users');
+        return Film::query();
+    }
+
+    public function relationSearch(): array
+    {
+        return [];
     }
 
     public function fields(): PowerGridFields
     {
         return PowerGrid::fields()
-            ->add('id')
-            ->add('name')
-            ->add('email')
-            ->add('current_team_id')
-            ->add('profile_photo_path')
-            ->add('created_at_formatted', fn ($model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->add('updated_at_formatted', fn ($model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'))
-            ->add('two_factor_secret')
-            ->add('two_factor_recovery_codes');
+            // ->add('id')
+            ->add('title')
+            ->add('abstract')
+            ->add('actors');
     }
 
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Name', 'name')
+            // Column::make('Id', 'id'),
+            Column::make('Title', 'title')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Email', 'email')
+            Column::make('Abstract', 'abstract')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Current team id', 'current_team_id'),
-            Column::make('Profile photo path', 'profile_photo_path')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Created at', 'created_at_formatted', 'created_at')
-                ->sortable(),
-
-            Column::make('Updated at', 'updated_at_formatted', 'updated_at')
-                ->sortable(),
-
-            Column::make('Two factor secret', 'two_factor_secret')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Two factor recovery codes', 'two_factor_recovery_codes')
+            Column::make('Actors', 'actors')
                 ->sortable()
                 ->searchable(),
 
             Column::action('Action')
-
         ];
     }
 
     public function filters(): array
     {
-        return [
-            Filter::datetimepicker('created_at'),
-            Filter::datetimepicker('updated_at'),
-        ];
+        return [];
     }
 
     #[\Livewire\Attributes\On('edit')]
     public function edit($rowId): void
     {
-        $this->js('alert('.$rowId.')');
+        $this->js('alert(' . $rowId . ')');
     }
 
-    public function actions($row): array
+    public function actions(Film $row): array
     {
         return [
             Button::add('edit')
-                ->slot('Edit: '.$row->id)
+                ->slot('Edit: ' . $row->id)
                 ->id()
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
                 ->dispatch('edit', ['rowId' => $row->id])
@@ -126,4 +111,9 @@ final class UserQueryBuilderTable extends PowerGridComponent
         ];
     }
     */
+
+    public function template(): ?string
+    {
+        return TailwindStriped::class;
+    }
 }
