@@ -23,7 +23,7 @@ class Tailwind extends TailwindBase
 {
     public function table(): Table
     {
-        return Theme::table('min-w-full dark:!bg-primary-800')
+        return Theme::table('min-w-full dark:!bg-primary-800  powergrid-demo-tailwind')
             ->div('rounded-t-lg my-3 relative border-x border-t border-pg-primary-200 dark:bg-pg-primary-700 dark:border-pg-primary-600')
             ->thead('shadow-sm rounded-t-lg bg-pg-primary-200 dark:bg-pg-primary-900')
             ->thAction('!font-bold')

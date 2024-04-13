@@ -10,7 +10,7 @@ class TailwindStriped extends Tailwind
 {
     public function table(): Table
     {
-        return Theme::table('min-w-full dark:bg-neutral-800')
+        return Theme::table('min-w-full dark:bg-neutral-800 powergrid-demo-tailwind-striped')
             ->div('rounded-t-lg relative border-x border-t border-pg-primary-200 dark:bg-pg-primary-700 dark:border-pg-primary-600')
             ->thead('shadow-sm rounded-t-lg bg-pg-primary-200 dark:bg-gray-900')
             ->thAction('!font-bold')

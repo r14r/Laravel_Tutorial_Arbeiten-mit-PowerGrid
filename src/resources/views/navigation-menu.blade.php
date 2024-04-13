@@ -12,16 +12,8 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-
-                    <x-nav-link href="{{ route('films') }}" :active="request()->routeIs('films')">
-                        {{ __('Films') }}
-                    </x-nav-link>
-
                     <x-nav-link href="{{ route('playground') }}" :active="request()->routeIs('playground')">
-                        {{ __('Playground:') }}
+                        {{ __('Playground') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('playground/collection') }}" :active="request()->routeIs('playground/collection')">
                         {{ __('Collection') }}

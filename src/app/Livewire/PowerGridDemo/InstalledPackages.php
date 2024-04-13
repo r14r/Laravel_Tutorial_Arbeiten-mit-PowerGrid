@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\PowerGridDemo;
 
 use App\Actions\GetVersionFromComposerJson;
 use Illuminate\Support\Collection;

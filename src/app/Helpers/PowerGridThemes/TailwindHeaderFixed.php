@@ -10,7 +10,7 @@ class TailwindHeaderFixed extends Tailwind
 {
     public function table(): Table
     {
-        return Theme::table('min-w-full')
+        return Theme::table('min-w-full  powergrid-demo-tailwind-header-fixed')
             ->div('max-h-[29rem]  relative border border-pg-primary-200 dark:bg-pg-primary-700 dark:border-pg-primary-600')
             ->thead('sticky -top-[0.3px] relative bg-pg-primary-200 dark:bg-gray-900')
             ->thAction('!font-bold')

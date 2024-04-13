@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\PowerGridDemo;
 
 use App\Helpers\PowerGridThemes\TailwindStriped;
 use App\Models\User;

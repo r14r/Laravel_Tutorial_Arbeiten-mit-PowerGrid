@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\PowerGridDemo;
 
 use App\Enums\Diet;
 use App\Models\Dish;

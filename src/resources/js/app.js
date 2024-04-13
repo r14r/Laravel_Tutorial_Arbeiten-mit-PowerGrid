@@ -1,13 +1,8 @@
-// import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+console.log('app.js: load powergrid');
 
-// import './bootstrap';
+import '../../vendor/power-components/livewire-powergrid/dist/powergrid'
 
-import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
+console.log('app.js: load powergrid tailwind css');
+import '../../vendor/power-components/livewire-powergrid/dist/tailwind.css'
 
-// If you use Tailwind
-import './../../vendor/power-components/livewire-powergrid/dist/tailwind.css'
 
-// If you use Bootstrap 5
-// import './../../vendor/power-components/livewire-powergrid/dist/bootstrap5.css'
-
-// Livewire.start();
